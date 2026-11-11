@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value="PROJ-INSS-FLUXOGRAMA"/>
+        <attribute name="authors" value="Enhazo"/>
+        <attribute name="about" value=""/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="sal, max, base, fum, fduo, ftri, ffor, pdduo, pdtri, pdfor, desc, aum, aduo, atri, afor, salf" type="Real" array="False" size=""/>
+            <declare name="q" type="String" array="False" size=""/>
+            <assign variable="q" expression="&quot;S&quot;"/>
+            <while expression="q == &quot;S&quot; || q == &quot;s&quot;">
+                <output expression="&quot;Esse programa calculara o valor que voc&#234; contribui o INSS parte por parte, como o jack estripador&quot;" newline="True"/>
+                <output expression="&quot;Digite o seu salario: &quot;" newline="True"/>
+                <input variable="sal"/>
+                <if expression="sal &lt;= 0">
+                    <then>
+                        <output expression="&quot;Erro: Digite um sal&#225;rio v&#225;lido maior que zero. &quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="sal &gt; 8475.55">
+                            <then>
+                                <assign variable="base" expression="8475.55"/>
+                            </then>
+                            <else>
+                                <assign variable="base" expression="sal"/>
+                            </else>
+                        </if>
+                        <if expression="base &lt;= 1621">
+                            <then>
+                                <assign variable="desc" expression="(base * 0.075)"/>
+                            </then>
+                            <else>
+                                <if expression="base &lt;= 2902.84">
+                                    <then>
+                                        <assign variable="desc" expression="(base * 0.09) - 24.32"/>
+                                    </then>
+                                    <else>
+                                        <if expression="base &lt;= 4354.27">
+                                            <then>
+                                                <assign variable="desc" expression="(base * 0.14) - 111.4"/>
+                                            </then>
+                                            <else>
+                                                <assign variable="desc" expression="(base * 0.14) - 198.49"/>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                        <assign variable="salf" expression="sal - desc"/>
+                        <output expression="&quot;Saidas dos Resultados no seu INSS SE BASEANDO DO SALARIO 'BRUTO'&quot;" newline="True"/>
+                        <output expression="&quot;Sal&#225;rio l&#237;quido ap&#243;s INSS: &quot; &amp; salf&amp; &quot; Desconto: &quot;&amp; desc" newline="True"/>
+                        <output expression="&quot;Se tu quiser reiniciar o computador. tecle S ou s se quiser repitir o programa&quot;" newline="True"/>
+                        <input variable="q"/>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+    <function name="ZerarVariaveis" type="None" variable="sal = 0">
+        <parameters/>
+        <body>
+            <declare name="sal, max, base, fum, fduo, ftri, ffor, pdduo, pdtri, pdfor, desc, aum, aduo, atri, afor, salf, q" type="Real" array="False" size=""/>
+            <assign variable="sal" expression="0"/>
+            <assign variable="max" expression="8475.55"/>
+            <assign variable="base" expression="0"/>
+            <assign variable="fum" expression="1621"/>
+            <assign variable="fduo" expression="2902.84"/>
+            <assign variable="ftri" expression="4354.27"/>
+            <assign variable="pdduo" expression="24.32"/>
+            <assign variable="pdtri" expression="111.40"/>
+            <assign variable="pdfor" expression="198.49"/>
+            <assign variable="desc" expression="0"/>
+            <assign variable="aum" expression="0.075"/>
+            <assign variable="aduo" expression="0.09"/>
+            <assign variable="atri" expression="0.12"/>
+            <assign variable="afor" expression="0.14"/>
+            <assign variable="salf" expression="0"/>
+        </body>
+    </function>
+</flowgorithm>
